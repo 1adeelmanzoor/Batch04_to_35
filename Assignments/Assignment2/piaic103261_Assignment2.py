@@ -48,7 +48,7 @@ def function2():
     #array value should be satart from 10 and end with 36 (both included)
     # Hint: dtype, reshape 
     
-    x = np.arange(1,28,dtype=np.float64).reshape((3,3,3))     #wrtie your code here
+    x = np.arange(10,37,dtype=np.float64).reshape((3,3,3))     #wrtie your code here
 
 
     return x
@@ -72,7 +72,7 @@ def function3():
     #extract those numbers from given array. those are must exist in 5,7 Table
     #example [35,70,105,..]
     a = np.arange(1, 100*10+1).reshape((100,10))
-    x = a[] #wrtie your code here
+    x = a[(a %5==0 ) & (a %7==0)] #wrtie your code here
     return x
     """
     Expected Output:
@@ -87,7 +87,7 @@ def function4():
    
     arr = np.arange(9).reshape(3,3)
   
-    return #wrtie your code here
+    return arr[:,[0,1]]=arr[:,[1,0]] #wrtie your code here
     """
     Expected Output:
           array([[1, 0, 2],
@@ -99,7 +99,7 @@ def function4():
 def function5():
     #Create a null vector of size 20 with 4 rows and 5 columns with numpy function
    
-    z = #wrtie your code here
+    z = np.zeros((20),dtype=int).reshape(4,5) #wrtie your code here
   
     return z
     """
@@ -113,8 +113,9 @@ def function5():
 #task6
 def function6():
     # Create a null vector of size 10 but the fifth and eighth value which is 10,20 respectively
-   
-    arr = #wrtie your code here
+    arr = np.zeros(10)
+    
+    arr[[4, 7]] = 10,20 #wrtie your code here
   
     return arr
    
@@ -124,7 +125,7 @@ def function7():
     #  Create an array of zeros with the same shape and type as X. Dont use reshape method
     x = np.arange(4, dtype=np.int64)
   
-    return #write your code here
+    return x[:]=0 #write your code here
 
     """
     Expected Output:
@@ -135,7 +136,7 @@ def function7():
 def function8():
     # Create a new array of 2x5 uints, filled with 6.
     
-    x = #write your code here
+    x = np.ones((2,5), dtype=np.uint)*6 #write your code here
   
     return x
 
@@ -149,7 +150,7 @@ def function8():
 def function9():
     # Create an array of 2, 4, 6, 8, ..., 100.
     
-    a = # write your code here
+    a = np.arange(2,102, 2) # write your code here
   
     return a
 
@@ -167,7 +168,7 @@ def function10():
     
     arr = np.array([[3,3,3],[4,4,4],[5,5,5]])
     brr = np.array([1,2,3])
-    subt = # write your code here 
+    subt =  arr-brr[:,None] # write your code here 
   
     return subt
 
@@ -184,7 +185,7 @@ def function11():
     # Replace all odd numbers in arr with -1 without changing arr.
     
     arr = np.array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
-    ans = #write your code here 
+    ans = np.where(arr%2!=0,-1,arr) #write your code here 
   
     return ans
 
@@ -199,7 +200,7 @@ def function12():
     # HINT: use stacking concept
     
     arr = np.array([1,2,3])
-    ans = #write your code here 
+    ans = np.r_[np.repeat(arr, 3), np.tile(arr, 3)] #write your code here 
   
     return ans
 
@@ -214,7 +215,7 @@ def function13():
     
     
     arr = np.array([2, 6, 1, 9, 10, 3, 27])
-    ans = #write your code here 
+    ans = arr[(arr>5)&(arr<10)] #write your code here 
   
     return ans
 
@@ -230,7 +231,7 @@ def function14():
     
     
     arr = np.arange(10, 34, 1) #write reshape code
-    ans = #write your code here 
+    ans = np.array_split(arr,4) #write your code here 
   
     return ans
 
@@ -248,7 +249,7 @@ def function15():
     
     
     arr = np.array([[ 8,  2, -2],[-4,  1,  7],[ 6,  3,  9]])
-    ans = #write your code here 
+    ans = arr[[1,0,2],:] #write your code here 
   
     return ans
 
@@ -266,7 +267,7 @@ def function16():
     
     x = np.array([[1], [2], [3]])
     y = np.array([[2], [3], [4]])
-    ans = #write your code here 
+    ans = np.dstack((x,y)) #write your code here 
   
     return ans
 
@@ -286,7 +287,7 @@ def function17():
     # otherwise it will be replaced with "NO"
     # Hint: np.where
     arr = np.arange(1,10*10+1).reshape((10,10))
-    return           # Write Your Code HERE
+    return np.where([(arr %3==0 ) & (arr %5==0)] ,'YES','NO') # Write Your Code HERE
 
 #Excpected Out
 """
@@ -308,7 +309,7 @@ def function18():
     # count values of "students" are exist in "piaic"
     piaic = np.arange(100)
     students = np.array([5,20,50,200,301,7001])
-    x = # Write you code Here
+    x = len(np.intersect1d(piaic , students)) # Write you code Here
     return x
 
     #Expected output: 3
@@ -322,10 +323,10 @@ def function19():
     # then create variable "b" with value equal to 5
     # Now return output as "(X*W)+b:
 
-    X =   # Write your code here
-    W =   # Write your code here 
-    b =   # Write your code here
-    output =    # Write your code here
+    X = np.arange(1,26).reshape(5,5) # Write your code here
+    W = X.copy().transpose() # Write your code here 
+    b = 5 # Write your code here
+    output = (X*W)+b # Write your code here
 
     #expected output
     """
@@ -344,6 +345,6 @@ def fucntion20():
     def abc(x):
         return x*2+3-2
 
-    return #Write your Code here
+    return abc(x) #Write your Code here
 #Expected Output: array([ 3,  5,  7,  9, 11, 13, 15, 17, 19, 21])
 #--------------------------X-----------------------------X-----------------------------X----------------------------X---------------------
